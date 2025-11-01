@@ -1,4 +1,5 @@
 const express = require("express");
+require("dotenv").config(); // Load environment variables from .env file
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const jwt = require("jsonwebtoken");
@@ -10,9 +11,32 @@ const sharp = require("sharp");
 
 const app = express();
 const PORT = 5000;
-const SECRET_KEY = "your-secret-key"; // Change this in production
+const SECRET_KEY = process.env.JWT_SECRET || "default-fallback-secret-key";
 
-app.use(cors());
+const allowedOrigins = [
+  "http://localhost:3000", // Local dev frontend
+  "https://clintonstack-technologies-1.onrender.com", // Live frontend
+];
+
+// Add the URL from .env if it exists and is not already in the list
+if (
+  process.env.FRONTEND_URL &&
+  !allowedOrigins.includes(process.env.FRONTEND_URL)
+) {
+  allowedOrigins.push(process.env.FRONTEND_URL);
+}
+
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+};
+
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
@@ -118,8 +142,11 @@ const verifyToken = (req, res, next) => {
 // Auth endpoints
 app.post("/auth/login", async (req, res) => {
   const { username, password } = req.body;
-  // Simple admin check (in production, use proper user management)
-  if (username === "zyphera" && password === "clinton@72") {
+  const adminUser = process.env.ADMIN_USER || "zyphera";
+  const adminPass = process.env.ADMIN_PASS || "clinton@72";
+
+  // Simple admin check
+  if (username === adminUser && password === adminPass) {
     const token = jwt.sign({ id: 1 }, SECRET_KEY, { expiresIn: "1h" });
     res.json({ token });
   } else {
