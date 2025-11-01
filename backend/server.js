@@ -61,17 +61,47 @@ const uploadLogo = multer({
   },
 });
 
-// Load database
-let db = JSON.parse(
-  fs.readFileSync(path.join(__dirname, "database.json"), "utf8")
-);
+const DB_PATH = path.join(__dirname, "database.json");
+
+const initializeDb = () => {
+  if (!fs.existsSync(DB_PATH)) {
+    const defaultDb = {
+      portfolio: [],
+      services: [],
+      testimonials: [],
+      contactMessages: [],
+      hero: {
+        heading: "Building the Future of Digital Solutions in Africa",
+        subheading: "Empowering businesses with cutting-edge technology",
+        cta1: "Get Started",
+        cta2: "View Portfolio",
+        image: "",
+      },
+      about: {
+        title: "About Us",
+        content:
+          "ClintonStack Technologies is a leading provider of tech solutions for Kenyan SMEs. Our mission is to empower businesses with cutting-edge technology.",
+      },
+      founder: { name: "Clinton Ochieng", title: "Founder & CEO", photo: "" },
+      profile: {
+        name: "Clinton Ochieng",
+        title: "Founder & CEO",
+        photo: "",
+        showProfilePicture: true,
+      },
+      companyLogo: { url: "", showLogo: true },
+      socialLinks: { facebook: "", linkedin: "", instagram: "", github: "" },
+    };
+    fs.writeFileSync(DB_PATH, JSON.stringify(defaultDb, null, 2));
+  }
+  return JSON.parse(fs.readFileSync(DB_PATH, "utf8"));
+};
+
+let db = initializeDb();
 
 // Save database
 const saveDb = () => {
-  fs.writeFileSync(
-    path.join(__dirname, "database.json"),
-    JSON.stringify(db, null, 2)
-  );
+  fs.writeFileSync(DB_PATH, JSON.stringify(db, null, 2));
 };
 
 // Middleware to verify JWT
