@@ -1,5 +1,7 @@
 import React from "react";
 
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
 const Settings = ({
   profile,
   logo,
@@ -95,8 +97,8 @@ const Settings = ({
               Current Logo:
             </p>
             <img
-              src={`http://localhost:5000${logo.url}`}
-              alt="Current Company Logo"
+              src={`${API_URL}${logo.url}`}
+              alt="Current Logo"
               className="h-16 w-auto object-contain"
               loading="lazy"
             />
