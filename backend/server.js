@@ -15,7 +15,8 @@ const SECRET_KEY = process.env.JWT_SECRET || "default-fallback-secret-key";
 
 const allowedOrigins = [
   "http://localhost:3000", // Local dev frontend
-  "https://clintonstack-technologies-1.onrender.com", // Live frontend
+  "https://clintonstack-technologies.onrender.com", // Live frontend
+  "https://clintonstack-technologies-1.onrender.com", // Alternative live frontend
 ];
 
 // Add the URL from .env if it exists and is not already in the list
