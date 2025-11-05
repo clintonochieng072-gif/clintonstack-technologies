@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
 const EditableMessage = ({ message, onUpdate, onDelete }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editedMessage, setEditedMessage] = useState(message);
@@ -16,7 +18,7 @@ const EditableMessage = ({ message, onUpdate, onDelete }) => {
       };
 
       const response = await axios.put(
-        `http://localhost:5000/contact/${message.id}`,
+        `${API_URL}/contact/${message.id}`,
         data,
         { headers: { Authorization: localStorage.getItem("token") } }
       );
@@ -144,7 +146,7 @@ const ContactMessages = ({ messages, setMessages }) => {
   const handleDeleteMessage = async (id) => {
     if (window.confirm("Are you sure you want to delete this message?")) {
       try {
-        await axios.delete(`http://localhost:5000/contact/${id}`, {
+        await axios.delete(`${API_URL}/contact/${id}`, {
           headers: { Authorization: localStorage.getItem("token") },
         });
         setMessages(messages.filter((msg) => msg.id !== id));

@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
 const About = () => {
   const [aboutData, setAboutData] = useState({});
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/about")
+      .get(`${API_URL}/about`)
       .then((response) => setAboutData(response.data))
       .catch((error) => console.error("Error fetching about data:", error));
   }, []);

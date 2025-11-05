@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
 const FounderIntro = () => {
   const [profile, setProfile] = useState({});
 
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/profile")
-      .then((res) => setProfile(res.data));
+    axios.get(`${API_URL}/profile`).then((res) => setProfile(res.data));
   }, []);
 
   return (
@@ -29,7 +29,7 @@ const FounderIntro = () => {
             <img
               src={
                 profile.photo
-                  ? `http://localhost:5000${profile.photo}`
+                  ? `${API_URL}${profile.photo}`
                   : "https://via.placeholder.com/200?text=CEO"
               }
               alt={profile.name}

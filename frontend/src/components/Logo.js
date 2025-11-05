@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
 const Logo = () => {
   const [logo, setLogo] = useState({});
 
@@ -10,7 +12,7 @@ const Logo = () => {
 
   const fetchLogo = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/logo");
+      const response = await axios.get(`${API_URL}/logo`);
       setLogo(response.data);
     } catch (error) {
       console.error("Error fetching logo:", error);
@@ -30,7 +32,7 @@ const Logo = () => {
   return (
     <div className="text-center py-8">
       <img
-        src={`http://localhost:5000${logo.url}`}
+        src={`${API_URL}${logo.url}`}
         alt="ClintonStack Technologies Logo"
         className="mx-auto h-16 w-auto mb-4"
       />

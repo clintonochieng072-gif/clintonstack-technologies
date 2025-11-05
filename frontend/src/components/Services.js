@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
 const Services = () => {
   const [services, setServices] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/services")
+      .get(`${API_URL}/services`)
       .then((response) => setServices(response.data))
       .catch((error) => console.error("Error fetching services:", error));
   }, []);

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
 const ManagePortfolio = () => {
   const [portfolio, setPortfolio] = useState([]);
   const [editingItem, setEditingItem] = useState(null);
@@ -19,7 +21,7 @@ const ManagePortfolio = () => {
 
   const fetchPortfolio = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/portfolio");
+      const response = await axios.get(`${API_URL}/portfolio`);
       setPortfolio(response.data);
     } catch (error) {
       console.error("Error fetching portfolio:", error);
@@ -39,7 +41,7 @@ const ManagePortfolio = () => {
 
       if (editingItem) {
         const response = await axios.put(
-          `http://localhost:5000/portfolio/${editingItem.id}`,
+          `${API_URL}/portfolio/${editingItem.id}`,
           dataToSend,
           {
             headers: { Authorization: token },
@@ -51,7 +53,7 @@ const ManagePortfolio = () => {
           )}`
         );
       } else {
-        await axios.post("http://localhost:5000/portfolio", formData, {
+        await axios.post(`${API_URL}/portfolio`, formData, {
           headers: { Authorization: token },
         });
         alert("Portfolio item added successfully");
@@ -77,7 +79,7 @@ const ManagePortfolio = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/portfolio/${id}`, {
+      await axios.delete(`${API_URL}/portfolio/${id}`, {
         headers: { Authorization: token },
       });
       fetchPortfolio();

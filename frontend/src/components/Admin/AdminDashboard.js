@@ -22,6 +22,8 @@ const AdminDashboard = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
 
+  const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
   useEffect(() => {
     if (!token) {
       navigate("/admin");
@@ -36,12 +38,9 @@ const AdminDashboard = () => {
 
   const fetchContactMessages = async () => {
     try {
-      const response = await axios.get(
-        "http://localhost:5000/contact-messages",
-        {
-          headers: { Authorization: token },
-        }
-      );
+      const response = await axios.get(`${API_URL}/contact-messages`, {
+        headers: { Authorization: token },
+      });
       setContactMessages(response.data);
     } catch (error) {
       console.error(
@@ -56,7 +55,7 @@ const AdminDashboard = () => {
 
   const fetchProfile = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/profile");
+      const response = await axios.get(`${API_URL}/profile`);
       setProfile(response.data);
     } catch (error) {
       console.error(
@@ -68,7 +67,7 @@ const AdminDashboard = () => {
 
   const fetchLogo = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/logo");
+      const response = await axios.get(`${API_URL}/logo`);
       setLogo(response.data);
     } catch (error) {
       console.error(
@@ -87,7 +86,7 @@ const AdminDashboard = () => {
     const newShow = !profile.showProfilePicture;
     try {
       await axios.put(
-        "http://localhost:5000/profile",
+        `${API_URL}/profile`,
         { showProfilePicture: newShow },
         {
           headers: { Authorization: token },
@@ -104,7 +103,7 @@ const AdminDashboard = () => {
     const newShow = !logo.showLogo;
     try {
       await axios.put(
-        "http://localhost:5000/logo",
+        `${API_URL}/logo`,
         { showLogo: newShow },
         {
           headers: { Authorization: token },
@@ -123,16 +122,12 @@ const AdminDashboard = () => {
       const formData = new FormData();
       formData.append("logo", file);
       try {
-        const response = await axios.post(
-          "http://localhost:5000/logo/upload",
-          formData,
-          {
-            headers: {
-              Authorization: token,
-              "Content-Type": "multipart/form-data",
-            },
-          }
-        );
+        const response = await axios.post(`${API_URL}/logo/upload`, formData, {
+          headers: {
+            Authorization: token,
+            "Content-Type": "multipart/form-data",
+          },
+        });
         setLogo({ ...logo, url: response.data.url });
         alert("Logo uploaded successfully!");
       } catch (error) {

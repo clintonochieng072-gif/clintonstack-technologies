@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
 const ManageTestimonials = () => {
   const [testimonials, setTestimonials] = useState([]);
   const [editingItem, setEditingItem] = useState(null);
@@ -19,7 +21,7 @@ const ManageTestimonials = () => {
 
   const fetchTestimonials = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/testimonials");
+      const response = await axios.get(`${API_URL}/testimonials`);
       setTestimonials(response.data);
     } catch (error) {
       console.error("Error fetching testimonials:", error);
@@ -39,7 +41,7 @@ const ManageTestimonials = () => {
 
       if (editingItem) {
         const response = await axios.put(
-          `http://localhost:5000/testimonials/${editingItem.id}`,
+          `${API_URL}/testimonials/${editingItem.id}`,
           dataToSend,
           {
             headers: { Authorization: token },
@@ -51,7 +53,7 @@ const ManageTestimonials = () => {
           )}`
         );
       } else {
-        await axios.post("http://localhost:5000/testimonials", formData, {
+        await axios.post(`${API_URL}/testimonials`, formData, {
           headers: { Authorization: token },
         });
         alert("Testimonial added successfully");
@@ -77,7 +79,7 @@ const ManageTestimonials = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/testimonials/${id}`, {
+      await axios.delete(`${API_URL}/testimonials/${id}`, {
         headers: { Authorization: token },
       });
       fetchTestimonials();

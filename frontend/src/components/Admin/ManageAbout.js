@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
 const ManageAbout = () => {
   const [aboutData, setAboutData] = useState({ title: "", content: "" });
 
@@ -12,7 +14,7 @@ const ManageAbout = () => {
 
   const fetchAbout = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/about");
+      const response = await axios.get(`${API_URL}/about`);
       setAboutData(response.data);
     } catch (error) {
       console.error("Error fetching about data:", error);
@@ -30,13 +32,9 @@ const ManageAbout = () => {
         }
       });
 
-      const response = await axios.put(
-        "http://localhost:5000/about",
-        dataToSend,
-        {
-          headers: { Authorization: token },
-        }
-      );
+      const response = await axios.put(`${API_URL}/about`, dataToSend, {
+        headers: { Authorization: token },
+      });
       alert(
         `About section updated successfully. Fields updated: ${response.data.updatedFields.join(
           ", "

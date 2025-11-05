@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Header from "../public/Header";
-import Hero from "../public/Hero";
-import About from "../public/About";
-import Services from "../public/Services";
-import Portfolio from "../public/Portfolio";
-import Testimonials from "../public/Testimonials";
-import CTA from "../public/CTA";
-import Contact from "../public/Contact";
-import Footer from "../public/Footer";
+import Header from "./Header";
+import Hero from "./Hero";
+import About from "./About";
+import Services from "./Services";
+import Portfolio from "./Portfolio";
+import Testimonials from "./Testimonials";
+import CTA from "./CTA";
+import Contact from "./Contact";
+import Footer from "./Footer";
 import "../../styles/PublicView.css";
+
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
 
 const PublicView = () => {
   const [data, setData] = useState({
@@ -39,14 +41,14 @@ const PublicView = () => {
           socialLinksRes,
           aboutRes,
         ] = await Promise.all([
-          axios.get("http://localhost:5000/hero"),
-          axios.get("http://localhost:5000/profile"),
-          axios.get("http://localhost:5000/logo"),
-          axios.get("http://localhost:5000/services"),
-          axios.get("http://localhost:5000/portfolio"),
-          axios.get("http://localhost:5000/testimonials"),
-          axios.get("http://localhost:5000/social-links"),
-          axios.get("http://localhost:5000/about"),
+          axios.get(`${API_URL}/hero`),
+          axios.get(`${API_URL}/profile`),
+          axios.get(`${API_URL}/logo`),
+          axios.get(`${API_URL}/services`),
+          axios.get(`${API_URL}/portfolio`),
+          axios.get(`${API_URL}/testimonials`),
+          axios.get(`${API_URL}/social-links`),
+          axios.get(`${API_URL}/about`),
         ]);
 
         setData({

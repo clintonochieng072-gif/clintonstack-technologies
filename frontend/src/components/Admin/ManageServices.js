@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
 const ManageServices = () => {
   const [services, setServices] = useState([]);
   const [editingItem, setEditingItem] = useState(null);
@@ -18,7 +20,7 @@ const ManageServices = () => {
 
   const fetchServices = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/services");
+      const response = await axios.get(`${API_URL}/services`);
       setServices(response.data);
     } catch (error) {
       console.error("Error fetching services:", error);
@@ -38,7 +40,7 @@ const ManageServices = () => {
 
       if (editingItem) {
         const response = await axios.put(
-          `http://localhost:5000/services/${editingItem.id}`,
+          `${API_URL}/services/${editingItem.id}`,
           dataToSend,
           {
             headers: { Authorization: token },
@@ -50,7 +52,7 @@ const ManageServices = () => {
           )}`
         );
       } else {
-        await axios.post("http://localhost:5000/services", formData, {
+        await axios.post(`${API_URL}/services`, formData, {
           headers: { Authorization: token },
         });
         alert("Service added successfully");
@@ -75,7 +77,7 @@ const ManageServices = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/services/${id}`, {
+      await axios.delete(`${API_URL}/services/${id}`, {
         headers: { Authorization: token },
       });
       fetchServices();

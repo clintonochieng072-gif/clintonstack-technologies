@@ -1,5 +1,7 @@
 import React from "react";
 
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
 const About = ({ profile, about }) => {
   return (
     <section id="about" className="py-20 bg-gray-50">
@@ -8,7 +10,7 @@ const About = ({ profile, about }) => {
           <div className="slide-in-left">
             {profile.showProfilePicture && profile.photo && (
               <img
-                src={`http://localhost:5000${profile.photo}`}
+                src={`${API_URL}${profile.photo}`}
                 alt={`Founder & CEO, ${profile.name}`}
                 className="rounded-lg shadow-2xl w-full max-w-md mx-auto object-cover"
                 style={{ aspectRatio: "1 / 1" }}

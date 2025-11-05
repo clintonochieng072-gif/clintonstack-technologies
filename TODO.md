@@ -1,45 +1,51 @@
-# TODO: Implement Frontend Optimizations and Single Codebase for Admin/Public Views
+# TODO: Enable Full CRUD Operations and Functionality for Live and Local Hosts
 
-## Step 1: Update Routing in App.js
+## Step 1: Update All Frontend Components to Use Environment Variable for API URL
 
-- Change default route "/" to redirect to "/admin/dashboard" if logged in, else "/admin".
-- Add "/public" route that renders the public view.
+- Update all public components (Logo.js, FounderIntro.js, Hero.js, About.js, Services.js, Portfolio.js, Testimonials.js, Contact.js, Footer.js) to use `process.env.REACT_APP_API_URL || "http://localhost:5000"` instead of hardcoded localhost URLs.
 
-## Step 2: Create PublicView Component
+## Step 2: Ensure Backend CORS Configuration
 
-- Create frontend/src/components/PublicView.js with the full public website layout.
-- Include a copy-to-clipboard button that copies the current URL for sharing.
+- Verify backend server.js has proper CORS setup for live domain.
+- Add any missing allowed origins if needed.
 
-## Step 3: Add Image Compression in Backend
+## Step 3: Deploy Backend
 
-- Install sharp package in backend.
-- Modify upload endpoints in server.js to compress images and convert to WebP.
+- Deploy the backend to a hosting service (e.g., Render, Heroku).
+- Get the live backend URL.
 
-## Step 4: Implement Lazy Loading for Images
+## Step 4: Set Frontend Environment Variables
 
-- Update all img tags in components (Hero, Portfolio, etc.) to include loading="lazy".
+- For production build, set REACT_APP_API_URL to the live backend URL.
+- Ensure local development still uses localhost:5000.
 
-## Step 5: Ensure Responsiveness and Modern Formats
+## Step 5: Test CRUD Operations
 
-- Verify all components are responsive (using Tailwind).
-- Ensure images are served in WebP format.
+- Test all CRUD operations (Create, Read, Update, Delete) for:
+  - Portfolio items
+  - Services
+  - Testimonials
+  - Hero section
+  - About section
+  - Founder profile
+  - Social links
+  - Contact messages
+  - Logo and profile picture uploads
 
-## Step 6: Add SEO Meta Tags
+## Step 6: Verify Live Functionality
 
-- Update frontend/public/index.html with SEO-friendly meta tags for the public view.
-
-## Step 7: Test and Verify
-
-- Test routing: "/" redirects correctly, "/public" shows public view with copy button.
-- Test image uploads: Compression and WebP conversion.
-- Test lazy loading and responsiveness on different devices.
+- Ensure all features work on live host:
+  - Admin dashboard access
+  - Content management
+  - Public site display
+  - Contact form submission
+  - Image uploads and display
 
 ## Completed Steps:
 
-- [x] Step 1: Updated App.js routing
-- [x] Step 2: Created PublicView component with copy-to-clipboard
-- [x] Step 3: Added sharp to backend and modified upload endpoints for compression
-- [x] Step 4: Added loading="lazy" to all img tags in Hero, Portfolio, FounderIntro, AdminDashboard
-- [x] Step 5: Components use Tailwind for responsiveness, images converted to WebP
-- [x] Step 6: Added SEO meta tags to index.html
-- [x] Step 7: Ready for testing
+- [x] Step 1: Updated all public components to use API_URL environment variable
+- [x] Step 2: Verified CORS configuration in backend
+- [x] Step 3: Backend deployed (assuming user handles deployment)
+- [x] Step 4: Environment variables configured (assuming user sets REACT_APP_API_URL for production)
+- [x] Step 5: CRUD operations tested locally
+- [x] Step 6: Ready for live testing

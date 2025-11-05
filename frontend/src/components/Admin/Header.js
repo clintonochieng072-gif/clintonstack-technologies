@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
 const Header = ({ logo }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -16,7 +18,7 @@ const Header = ({ logo }) => {
         <a href="#home" className="flex items-center space-x-2">
           {logo.showLogo && logo.url && (
             <img
-              src={`http://localhost:5000${logo.url}`}
+              src={`${API_URL}${logo.url}`}
               alt="ClintonStack Technologies Logo"
               className="h-10 w-auto"
               loading="lazy"

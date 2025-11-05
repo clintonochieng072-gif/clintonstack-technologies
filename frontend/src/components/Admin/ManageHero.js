@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
 const ManageHero = () => {
   const [heroData, setHeroData] = useState({
     heading: "",
@@ -18,7 +20,7 @@ const ManageHero = () => {
 
   const fetchHero = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/hero");
+      const response = await axios.get(`${API_URL}/hero`);
       setHeroData(response.data);
     } catch (error) {
       console.error("Error fetching hero data:", error);
@@ -36,13 +38,9 @@ const ManageHero = () => {
         }
       });
 
-      const response = await axios.put(
-        "http://localhost:5000/hero",
-        dataToSend,
-        {
-          headers: { Authorization: token },
-        }
-      );
+      const response = await axios.put(`${API_URL}/hero`, dataToSend, {
+        headers: { Authorization: token },
+      });
       alert(
         `Hero section updated successfully. Fields updated: ${response.data.updatedFields.join(
           ", "

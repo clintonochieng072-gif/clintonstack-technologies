@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
 const ManageFounder = () => {
   const [profile, setProfile] = useState({
     name: "",
@@ -12,9 +14,7 @@ const ManageFounder = () => {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/profile")
-      .then((res) => setProfile(res.data));
+    axios.get(`${API_URL}/profile`).then((res) => setProfile(res.data));
   }, []);
 
   const handleFileChange = (e) => {
@@ -31,16 +31,12 @@ const ManageFounder = () => {
     formData.append("photo", selectedFile);
 
     try {
-      const uploadRes = await axios.put(
-        "http://localhost:5000/profile/upload",
-        formData,
-        {
-          headers: {
-            Authorization: localStorage.getItem("token"),
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      const uploadRes = await axios.put(`${API_URL}/profile/upload`, formData, {
+        headers: {
+          Authorization: localStorage.getItem("token"),
+          "Content-Type": "multipart/form-data",
+        },
+      });
       setProfile({ ...profile, photo: uploadRes.data.url });
       setMessage("Profile photo uploaded successfully");
       setSelectedFile(null);
@@ -59,7 +55,7 @@ const ManageFounder = () => {
       }
     });
     axios
-      .put("http://localhost:5000/profile", data, {
+      .put(`${API_URL}/profile`, data, {
         headers: { Authorization: localStorage.getItem("token") },
       })
       .then((res) => {
@@ -111,7 +107,7 @@ const ManageFounder = () => {
         {profile.photo && (
           <div className="mt-4 flex items-center gap-4">
             <img
-              src={`http://localhost:5000${profile.photo}`}
+              src={`${API_URL}${profile.photo}`}
               alt="Current founder profile"
               className="w-24 h-24 rounded-full object-cover border-2 border-blue-500"
             />

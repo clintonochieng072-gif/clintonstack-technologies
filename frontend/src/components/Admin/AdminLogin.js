@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
 const AdminLogin = () => {
   const [credentials, setCredentials] = useState({
     username: "",
@@ -17,10 +19,7 @@ const AdminLogin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "http://localhost:5000/auth/login",
-        credentials
-      );
+      const response = await axios.post(`${API_URL}/auth/login`, credentials);
       localStorage.setItem("token", response.data.token);
       navigate("/admin/dashboard");
     } catch (error) {
