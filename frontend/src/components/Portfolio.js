@@ -25,17 +25,11 @@ const Portfolio = () => {
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {portfolio.map((item) => (
+          {portfolio.slice(0, 1).map((item) => (
             <div
               key={item.id}
               className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300"
             >
-              <img
-                src={item.image}
-                alt={item.title}
-                className="w-full h-48 object-cover rounded-lg mb-4"
-                loading="lazy"
-              />
               <h3 className="text-xl font-semibold text-[#0B3D91] mb-2">
                 {item.title}
               </h3>

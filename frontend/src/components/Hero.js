@@ -40,14 +40,7 @@ const Hero = () => {
           </div>
         </div>
         <div className="md:w-1/2">
-          <img
-            src={
-              heroData.image || "https://via.placeholder.com/400x300?text=CEO"
-            }
-            alt="CEO"
-            className="rounded-lg shadow-lg"
-            loading="lazy"
-          />
+          {/* Image removed as requested - only showing at top */}
         </div>
       </div>
     </section>

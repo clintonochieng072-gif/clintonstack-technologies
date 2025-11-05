@@ -25,17 +25,12 @@ const Testimonials = () => {
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {testimonials.map((testimonial) => (
+          {testimonials.slice(0, 1).map((testimonial) => (
             <div
               key={testimonial.id}
               className="bg-gray-50 p-6 rounded-lg shadow-md"
             >
               <div className="flex items-center mb-4">
-                <img
-                  src={testimonial.image}
-                  alt={testimonial.name}
-                  className="w-12 h-12 rounded-full mr-4"
-                />
                 <div>
                   <h4 className="font-semibold text-[#0B3D91]">
                     {testimonial.name}
