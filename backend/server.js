@@ -514,9 +514,7 @@ app.post("/contact/:id/reply", (req, res) => {
   }
 });
 
-// Get contact messages (admin only)
-app.get("/contact-messages", verifyToken, (req, res) =>
-  res.json(db.contactMessages)
-);
+// Get contact messages (public for display)
+app.get("/contact-messages", (req, res) => res.json(db.contactMessages));
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
