@@ -1,0 +1,139 @@
+{
+  "portfolio": [
+    {
+      "id": 1,
+      "title": "E-Commerce Platform",
+      "description": "Updated e-commerce solution with advanced payment integration.",
+      "image": "/logo-1761399513949-857007785.png",
+      "link": "#"
+    },
+    {
+      "id": 2,
+      "title": "Mobile App Development",
+      "description": "Custom mobile applications for Android and iOS.",
+      "image": "/profile-1761396150119-825844653.png",
+      "link": "#"
+    }
+  ],
+  "services": [
+    {
+      "id": 1,
+      "title": "Web Development",
+      "description": "Building responsive and dynamic websites with modern technologies.",
+      "icon": "🌐"
+    },
+    {
+      "id": 2,
+      "title": "Mobile App Development",
+      "description": "Creating native and cross-platform mobile apps.",
+      "icon": "📱"
+    },
+    {
+      "id": 3,
+      "title": "UI/UX Design",
+      "description": "Designing intuitive user interfaces and experiences.",
+      "icon": "🎨"
+    }
+  ],
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "company": "Tech Corp",
+      "message": "ClintonStack delivered exceptional service. Highly recommend! Updated feedback.",
+      "image": "/profile-1761396037511-375746742.png"
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "company": "Startup Inc",
+      "message": "Professional and timely. Great results!",
+      "image": "/logo-1761399513949-857007785.png"
+    }
+  ],
+  "hero": {
+    "heading": "Updated Welcome",
+    "subheading": "Updated subheading",
+    "cta1": "Get Started",
+    "cta2": "See Portfolio",
+    "image": "/profile-1761396150119-825844653.png"
+  },
+  "about": {
+    "title": "Updated About Us",
+    "content": "Updated content"
+  },
+  "founder": {
+    "welcomeText": "Welcome to ClintonStack Technologies",
+    "name": "Clinton Ochieng ",
+    "title": "Founder & CEO",
+    "profilePicture": "/profile-1761396150119-825844653.png",
+    "tagline": "Building the Future of Digital Solutions in Africa."
+  },
+  "socialLinks": {
+    "facebook": "https://facebook.com/updated",
+    "linkedin": "https://www.linkedin.com/in/clinton-ochieng-706263351",
+    "instagram": "https://www.instagram.com/clintonstack",
+    "github": "https://github.com/clintonstack"
+  },
+  "contactMessages": [
+    {
+      "id": 1761383622643,
+      "name": "Test User",
+      "email": "test@example.com",
+      "message": "This is a test message",
+      "date": "2025-10-25T09:13:42.643Z"
+    },
+    {
+      "id": 1761386530288,
+      "name": "Test User",
+      "email": "test@example.com",
+      "message": "This is a test message",
+      "date": "2025-10-25T10:02:10.288Z"
+    },
+    {
+      "id": 1761393919456,
+      "name": "Test User",
+      "email": "test@example.com",
+      "message": "Test message for contact form",
+      "date": "2025-10-25T12:05:19.456Z"
+    },
+    {
+      "id": 1761395662923,
+      "name": "Updated Name",
+      "email": "test@example.com",
+      "message": "Updated message content",
+      "date": "2025-10-25T12:34:22.923Z"
+    },
+    {
+      "id": 1761395804379,
+      "name": "Test User",
+      "email": "test@example.com",
+      "message": "Test message for contact form",
+      "date": "2025-10-25T12:36:44.379Z"
+    },
+    {
+      "id": 1761398483053,
+      "name": "Test User",
+      "email": "test@example.com",
+      "message": "Test message for contact form",
+      "date": "2025-10-25T13:21:23.053Z"
+    },
+    {
+      "id": 1762329497930,
+      "name": "Updated Test User",
+      "email": "test@example.com",
+      "message": "Test message",
+      "date": "2025-11-05T07:58:17.930Z"
+    }
+  ],
+  "profile": {
+    "name": "Updated Clinton",
+    "title": "Updated Founder",
+    "photo": "/uploads/profile-1761396150119-825844653.png",
+    "showProfilePicture": true
+  },
+  "companyLogo": {
+    "url": "/uploads/logo-1761399513949-857007785.png",
+    "showLogo": true
+  }
+}

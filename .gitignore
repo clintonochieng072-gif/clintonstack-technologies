@@ -12,10 +12,10 @@ yarn-error.log*
 .env.production.local
 
 # Database files (contains sensitive user data like contact messages)
-backend/database.json
+# backend/database.json
 
 # Uploaded files (user-generated content, potentially sensitive)
-backend/uploads/
+# backend/uploads/
 
 # Logs
 logs
