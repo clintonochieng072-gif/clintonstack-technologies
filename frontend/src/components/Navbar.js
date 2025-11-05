@@ -1,14 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [logo, setLogo] = useState({});
+
+  useEffect(() => {
+    fetchLogo();
+  }, []);
+
+  const fetchLogo = async () => {
+    try {
+      const response = await axios.get(`${API_URL}/logo`);
+      setLogo(response.data);
+    } catch (error) {
+      console.error("Error fetching logo:", error);
+    }
+  };
 
   return (
     <nav className="bg-white shadow-lg sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
+            {logo.url && logo.showLogo && (
+              <img
+                src={`${API_URL}${logo.url}`}
+                alt="ClintonStack Technologies Logo"
+                className="h-8 w-auto mr-2"
+              />
+            )}
             <Link to="/" className="text-2xl font-bold text-[#0B3D91]">
               ClintonStack
             </Link>

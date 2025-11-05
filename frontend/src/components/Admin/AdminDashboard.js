@@ -137,6 +137,31 @@ const AdminDashboard = () => {
     }
   };
 
+  const handleProfileUpload = async (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const formData = new FormData();
+      formData.append("photo", file);
+      try {
+        const response = await axios.put(
+          `${API_URL}/profile/upload`,
+          formData,
+          {
+            headers: {
+              Authorization: token,
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+        setProfile({ ...profile, photo: response.data.url });
+        alert("Profile picture uploaded successfully!");
+      } catch (error) {
+        console.error("Error uploading profile picture:", error);
+        alert("Error uploading profile picture");
+      }
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-100">
       <nav className="bg-[#0B3D91] text-white p-4">
@@ -174,6 +199,7 @@ const AdminDashboard = () => {
                 toggleProfilePicture={toggleProfilePicture}
                 toggleLogo={toggleLogo}
                 handleLogoUpload={handleLogoUpload}
+                handleProfileUpload={handleProfileUpload}
               />
             )}
             {activeTab === "founder" && <ManageFounder />}

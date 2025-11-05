@@ -1,51 +1,27 @@
-# TODO: Enable Full CRUD Operations and Functionality for Live and Local Hosts
+# TODO List for Public View Modifications
 
-## Step 1: Update All Frontend Components to Use Environment Variable for API URL
+## 1. Remove Large Logo Section from Public View
 
-- Update all public components (Logo.js, FounderIntro.js, Hero.js, About.js, Services.js, Portfolio.js, Testimonials.js, Contact.js, Footer.js) to use `process.env.REACT_APP_API_URL || "http://localhost:5000"` instead of hardcoded localhost URLs.
+- [x] Remove `<Logo />` component from `PublicView.js` since small logo icon is in navbar header.
 
-## Step 2: Ensure Backend CORS Configuration
+## 2. Modify FounderIntro Section
 
-- Verify backend server.js has proper CORS setup for live domain.
-- Add any missing allowed origins if needed.
+- [x] Update `FounderIntro.js` to display small profile picture (w-20 h-20) on the right side.
+- [x] Make profile picture visibility conditional based on `profile.showProfilePicture`.
+- [x] Strip "Updated " prefix from founder name display.
 
-## Step 3: Deploy Backend
+## 3. Add Profile Picture Upload to Admin Settings
 
-- Deploy the backend to a hosting service (e.g., Render, Heroku).
-- Get the live backend URL.
+- [x] Update `Settings.js` to include profile picture upload input and display current profile picture.
+- [x] Ensure `handleProfileUpload` is passed from `AdminDashboard.js` to `Settings.js`.
 
-## Step 4: Set Frontend Environment Variables
+## 4. Remove "Updated" Prefixes from Public View Displays
 
-- For production build, set REACT_APP_API_URL to the live backend URL.
-- Ensure local development still uses localhost:5000.
+- [x] Update `Hero.js` to strip "Updated " from heading display.
+- [x] Update `About.js` to strip "Updated " from title display.
+- [x] Update `FounderIntro.js` to strip "Updated " from name display.
 
-## Step 5: Test CRUD Operations
+## 5. Testing
 
-- Test all CRUD operations (Create, Read, Update, Delete) for:
-  - Portfolio items
-  - Services
-  - Testimonials
-  - Hero section
-  - About section
-  - Founder profile
-  - Social links
-  - Contact messages
-  - Logo and profile picture uploads
-
-## Step 6: Verify Live Functionality
-
-- Ensure all features work on live host:
-  - Admin dashboard access
-  - Content management
-  - Public site display
-  - Contact form submission
-  - Image uploads and display
-
-## Completed Steps:
-
-- [x] Step 1: Updated all public components to use API_URL environment variable
-- [x] Step 2: Verified CORS configuration in backend
-- [x] Step 3: Backend deployed (assuming user handles deployment)
-- [x] Step 4: Environment variables configured (assuming user sets REACT_APP_API_URL for production)
-- [x] Step 5: CRUD operations tested locally
-- [x] Step 6: Ready for live testing
+- [ ] Test the changes in the frontend to ensure small icons, conditional visibility, and no "Updated" prefixes.
+- [ ] Verify profile picture upload works in admin settings.

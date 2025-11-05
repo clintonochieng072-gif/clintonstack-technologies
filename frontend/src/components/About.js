@@ -18,7 +18,7 @@ const About = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-[#0B3D91] mb-4">
-            {aboutData.title || "About Us"}
+            {aboutData.title?.replace(/^Updated\s+/, "") || "About Us"}
           </h2>
         </div>
         <div className="max-w-3xl mx-auto text-center">

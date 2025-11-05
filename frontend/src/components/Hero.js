@@ -18,7 +18,8 @@ const Hero = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center">
         <div className="md:w-1/2 mb-10 md:mb-0">
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
-            {heroData.heading || "Welcome to ClintonStack Technologies"}
+            {heroData.heading?.replace(/^Updated\s+/, "") ||
+              "Welcome to ClintonStack Technologies"}
           </h1>
           <p className="text-xl mb-8">
             {heroData.subheading ||

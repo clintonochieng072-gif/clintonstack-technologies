@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Logo from "./Logo";
 import FounderIntro from "./FounderIntro";
 import Navbar from "./Navbar";
 import Hero from "./Hero";
@@ -24,7 +23,6 @@ const PublicView = () => {
 
   return (
     <>
-      <Logo />
       <FounderIntro />
       <Navbar />
       <Hero />

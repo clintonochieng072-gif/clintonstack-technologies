@@ -8,14 +8,27 @@ const Settings = ({
   toggleProfilePicture,
   toggleLogo,
   handleLogoUpload,
+  handleProfileUpload,
 }) => {
   return (
     <div className="space-y-6">
-      {/* Profile Picture Toggle */}
+      {/* Profile Picture Settings */}
       <div className="bg-white p-4 sm:p-6 rounded-lg shadow">
         <h2 className="text-xl font-semibold mb-4 text-gray-800">
           Profile Picture Settings
         </h2>
+        <div className="mb-4">
+          <label htmlFor="profile-upload" className="sr-only">
+            Upload new profile picture
+          </label>
+          <input
+            id="profile-upload"
+            type="file"
+            accept="image/*"
+            onChange={handleProfileUpload}
+            className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 cursor-pointer"
+          />
+        </div>
         <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-3 sm:space-y-0">
           <button
             onClick={toggleProfilePicture}
@@ -45,6 +58,19 @@ const Settings = ({
             </span>
           </span>
         </div>
+        {profile.photo && (
+          <div className="mt-6 bg-gray-50 p-4 rounded-md">
+            <p className="text-sm font-medium text-gray-600 mb-2">
+              Current Profile Picture:
+            </p>
+            <img
+              src={`${API_URL}${profile.photo}`}
+              alt="Current Profile Picture"
+              className="h-16 w-16 rounded-full object-cover"
+              loading="lazy"
+            />
+          </div>
+        )}
       </div>
 
       {/* Logo Upload and Toggle */}
