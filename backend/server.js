@@ -157,7 +157,14 @@ app.post("/auth/login", async (req, res) => {
 // Contact endpoint
 app.post("/contact", (req, res) => {
   const { name, email, message } = req.body;
-  const newMessage = { id: Date.now(), name, email, message, date: new Date() };
+  const newMessage = {
+    id: Date.now(),
+    name,
+    email,
+    message,
+    date: new Date(),
+    replies: [],
+  };
   db.contactMessages.push(newMessage);
   saveDb();
   res.json({ status: "success", message: "Message received!" });
@@ -489,6 +496,21 @@ app.put("/contact/:id", verifyToken, (req, res) => {
     });
   } else {
     res.status(404).json({ message: "Contact message not found" });
+  }
+});
+
+// Add reply to contact message (public)
+app.post("/contact/:id/reply", (req, res) => {
+  const id = parseInt(req.params.id);
+  const { name, reply } = req.body;
+  const index = db.contactMessages.findIndex((msg) => msg.id === id);
+  if (index !== -1) {
+    const newReply = { id: Date.now(), name, reply, date: new Date() };
+    db.contactMessages[index].replies.push(newReply);
+    saveDb();
+    res.json({ status: "success", message: "Reply added!" });
+  } else {
+    res.status(404).json({ message: "Message not found" });
   }
 });
 

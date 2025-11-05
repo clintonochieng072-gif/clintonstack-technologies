@@ -97,6 +97,47 @@ body {
   z-index: 1000;
 }
 
+.social-float {
+  position: fixed;
+  right: 20px;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.facebook-float {
+  bottom: 90px;
+  background: #1877f2;
+}
+
+.linkedin-float {
+  bottom: 150px;
+  background: #0077b5;
+}
+
+.instagram-float {
+  bottom: 210px;
+  background: #e4405f;
+}
+
+.github-float {
+  bottom: 270px;
+  background: #333;
+}
+
+.social-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
 /* Profile photo styles */
 .profile-photo {
   border-radius: 50%;
