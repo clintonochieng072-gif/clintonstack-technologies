@@ -28,6 +28,7 @@ const PublicView = () => {
   const [socialLinks, setSocialLinks] = useState({});
   const [showMessages, setShowMessages] = useState(false);
   const [messages, setMessages] = useState([]);
+  const [messageCount, setMessageCount] = useState(0);
   const [replyForm, setReplyForm] = useState({
     messageId: null,
     name: "",
@@ -39,12 +40,19 @@ const PublicView = () => {
       .get(`${API_URL}/social-links`)
       .then((res) => setSocialLinks(res.data));
     fetchMessages();
+
+    // Listen for message sent events
+    const handleMessageSent = () => fetchMessages();
+    window.addEventListener("messageSent", handleMessageSent);
+
+    return () => window.removeEventListener("messageSent", handleMessageSent);
   }, []);
 
   const fetchMessages = async () => {
     try {
       const response = await axios.get(`${API_URL}/contact-messages`);
       setMessages(response.data);
+      setMessageCount(response.data.length);
     } catch (error) {
       console.error("Error fetching messages:", error);
     }
@@ -140,10 +148,15 @@ const PublicView = () => {
       </button>
       <button
         onClick={() => setShowMessages(!showMessages)}
-        className="fixed bottom-32 right-4 bg-green-600 hover:bg-green-700 text-white p-3 rounded-full shadow-lg transition-colors z-50"
+        className="fixed bottom-32 right-4 bg-green-600 hover:bg-green-700 text-white p-3 rounded-full shadow-lg transition-colors z-50 relative"
         title="View Messages"
       >
         <FaComments />
+        {messageCount > 0 && (
+          <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+            {messageCount}
+          </span>
+        )}
       </button>
       {showMessages && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">

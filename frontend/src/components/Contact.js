@@ -21,6 +21,8 @@ const Contact = () => {
       const response = await axios.post(`${API_URL}/contact`, formData);
       setStatus(response.data.message);
       setFormData({ name: "", email: "", message: "" });
+      // Trigger message count update in parent component
+      window.dispatchEvent(new CustomEvent("messageSent"));
     } catch (error) {
       setStatus("Error sending message. Please try again.");
     }
