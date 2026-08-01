@@ -1,31 +1,33 @@
 'use client';
 
-import React from 'react';
 import { motion } from 'framer-motion';
+import AnimatedSection from './AnimatedSection';
 
 const steps = [
-  { title: 'Discovery', desc: 'We learn your goals, users, and metrics that matter.' },
-  { title: 'Design & Prototype', desc: 'High-fidelity designs and clickable prototypes for rapid validation.' },
-  { title: 'Build & Automate', desc: 'Engineering with observability, testing, and automation.' },
-  { title: 'Launch & Iterate', desc: 'Measure results and iterate to improve impact.' },
+  { title: 'Discover', desc: 'We learn your goals, users and the metrics that matter.' },
+  { title: 'Design', desc: 'We prototype elegant experiences with clarity and speed.' },
+  { title: 'Build', desc: 'We engineer resilient products with automation and observability.' },
+  { title: 'Launch', desc: 'We iterate quickly and turn performance into durable growth.' },
 ];
 
 export default function Process() {
   return (
-    <section className="py-20 bg-white">
-      <div className="container mx-auto text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">How We Work</h2>
-        <p className="text-gray-600 max-w-2xl mx-auto">A lean, transparent process focused on speed and measurable business outcomes.</p>
-        <div className="grid md:grid-cols-4 gap-6 mt-8">
-          {steps.map((s, i) => (
-            <motion.div key={s.title} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.12 }} className="p-6 bg-slate-50 rounded-xl">
-              <div className="text-3xl font-bold text-primary mb-2">{`0${i + 1}`}</div>
-              <h4 className="font-semibold mb-1">{s.title}</h4>
-              <p className="text-sm text-gray-600">{s.desc}</p>
+    <section id="process" className="border-b border-white/10 bg-slate-950/70 px-6 py-24 sm:px-8 lg:px-10">
+      <AnimatedSection className="mx-auto max-w-7xl">
+        <div className="mb-12 max-w-3xl">
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.32em] text-cyan-400">Our development process</p>
+          <h2 className="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">A modern operating model designed for premium delivery.</h2>
+        </div>
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          {steps.map((step, index) => (
+            <motion.div key={step.title} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.08 }} className="rounded-[1.6rem] border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
+              <div className="text-3xl font-semibold text-cyan-300">0{index + 1}</div>
+              <h3 className="mt-4 text-xl font-semibold text-white">{step.title}</h3>
+              <p className="mt-3 text-base leading-7 text-slate-400">{step.desc}</p>
             </motion.div>
           ))}
         </div>
-      </div>
+      </AnimatedSection>
     </section>
   );
 }

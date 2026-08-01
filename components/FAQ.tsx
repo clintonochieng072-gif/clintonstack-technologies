@@ -1,25 +1,28 @@
-import React from 'react';
+import AnimatedSection from './AnimatedSection';
 
 const faqs = [
-  { q: 'What services do you offer?', a: 'We build custom software, websites, AI-driven automation, SaaS platforms, and lead generation systems tailored to your business.' },
-  { q: 'How long does a typical project take?', a: 'Typical timelines vary: a marketing website can take 2–6 weeks; a custom software project is scoped and often delivered in 8–16+ weeks depending on complexity.' },
-  { q: 'Do you provide ongoing support?', a: 'Yes — we offer maintenance, monitoring and iterative product development services post-launch.' },
+  { q: 'What kinds of projects do you take on?', a: 'We design and build high-performance websites, custom software products, AI automation systems, and product-led experiences for ambitious companies.' },
+  { q: 'How quickly can we begin?', a: 'Most engagements begin with a discovery call and a tailored roadmap within a matter of days.' },
+  { q: 'Do you support ongoing iteration?', a: 'Yes. We provide launch support, product refinement and growth-focused enhancements long after the first release.' },
 ];
 
 export default function FAQ() {
   return (
-    <section className="py-20 bg-slate-50">
-      <div className="container mx-auto max-w-3xl">
-        <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">Frequently Asked Questions</h2>
-        <dl className="space-y-4">
-          {faqs.map((f) => (
-            <div key={f.q}>
-              <dt className="font-semibold">{f.q}</dt>
-              <dd className="text-gray-600">{f.a}</dd>
+    <section className="border-b border-white/10 bg-slate-900/70 px-6 py-24 sm:px-8 lg:px-10">
+      <AnimatedSection className="mx-auto max-w-4xl">
+        <div className="mb-12 max-w-3xl">
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.32em] text-cyan-400">Frequently asked questions</p>
+          <h2 className="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">Everything you need to know before we build together.</h2>
+        </div>
+        <div className="space-y-4">
+          {faqs.map((faq) => (
+            <div key={faq.q} className="rounded-[1.4rem] border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+              <dt className="text-lg font-semibold text-white">{faq.q}</dt>
+              <dd className="mt-3 text-base leading-7 text-slate-400">{faq.a}</dd>
             </div>
           ))}
-        </dl>
-      </div>
+        </div>
+      </AnimatedSection>
     </section>
   );
 }

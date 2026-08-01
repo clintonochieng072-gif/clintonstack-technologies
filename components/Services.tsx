@@ -1,26 +1,36 @@
-import React from 'react';
+import { BrainCircuit, Compass, Rocket, ShieldCheck } from 'lucide-react';
+import AnimatedSection from './AnimatedSection';
 
 const services = [
-  { title: 'Custom Software Development', desc: 'Build tailored systems that automate and scale your business.' },
-  { title: 'Business Websites', desc: 'Conversion-focused websites that capture leads and tell your story.' },
-  { title: 'AI & Business Automation', desc: 'AI-driven workflows to reduce manual work and increase accuracy.' },
-  { title: 'Lead Generation Systems', desc: 'Capture and route high-quality leads to your sales team.' },
+  { title: 'Product strategy', desc: 'Transform complex business goals into product systems that feel effortless and measurable.', icon: Compass },
+  { title: 'AI automation', desc: 'Deploy copilots, workflow automations and intelligent decision support that save time.', icon: BrainCircuit },
+  { title: 'Growth websites', desc: 'Create premium marketing sites designed to convert traffic into qualified opportunities.', icon: Rocket },
+  { title: 'Operational excellence', desc: 'Launch resilient software foundations with security, observability and intelligent support.', icon: ShieldCheck },
 ];
 
 export default function Services() {
   return (
-    <section id="services" className="py-20">
-      <div className="container mx-auto text-center">
-        <h2 className="text-3xl font-bold text-primary mb-6">Business Problems We Solve</h2>
-        <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
-          {services.map((s) => (
-            <div key={s.title} className="bg-white p-6 rounded-xl shadow-sm text-left">
-              <h3 className="font-semibold mb-2">{s.title}</h3>
-              <p className="text-sm text-gray-600">{s.desc}</p>
-            </div>
-          ))}
+    <section id="solutions" className="border-b border-white/10 bg-slate-900/70 px-6 py-24 sm:px-8 lg:px-10">
+      <AnimatedSection className="mx-auto max-w-7xl">
+        <div className="mb-12 max-w-3xl">
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.32em] text-cyan-400">Business problems we solve</p>
+          <h2 className="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">Premium solutions for teams that need speed, clarity and trust.</h2>
         </div>
-      </div>
+        <div className="grid gap-6 md:grid-cols-2">
+          {services.map((service) => {
+            const Icon = service.icon;
+            return (
+              <div key={service.title} className="rounded-[1.6rem] border border-white/10 bg-white/6 p-8 backdrop-blur-xl">
+                <div className="mb-6 inline-flex rounded-2xl border border-cyan-400/30 bg-cyan-400/10 p-3 text-cyan-300">
+                  <Icon className="h-6 w-6" />
+                </div>
+                <h3 className="text-xl font-semibold text-white">{service.title}</h3>
+                <p className="mt-3 text-base leading-7 text-slate-400">{service.desc}</p>
+              </div>
+            );
+          })}
+        </div>
+      </AnimatedSection>
     </section>
   );
 }

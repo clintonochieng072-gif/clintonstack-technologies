@@ -11,28 +11,21 @@ export const metadata = {
     default: 'ClintonStack Technologies',
     template: '%s | ClintonStack Technologies',
   },
-  description: 'We build software, websites, AI systems and automation tools that help businesses grow faster.',
+  description: 'ClintonStack Technologies designs premium software, AI systems, and digital products for modern businesses.',
   applicationName: 'ClintonStack Technologies',
   authors: [{ name: 'ClintonStack Technologies' }],
-  keywords: [
-    'ClintonStack',
-    'software development',
-    'AI automation',
-    'SaaS',
-    'Kenya',
-    'digital transformation',
-  ],
+  keywords: ['ClintonStack', 'software company', 'AI automation', 'SaaS', 'Kenya', 'digital transformation'],
   openGraph: {
     title: 'ClintonStack Technologies',
-    description: 'We build software, websites, AI systems and automation tools that help businesses grow faster.',
+    description: 'Premium software, AI systems, and digital experiences for ambitious companies.',
     url: 'https://clintonstack.com',
     siteName: 'ClintonStack Technologies',
     images: [
       {
-        url: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80&auto=format&fit=crop',
+        url: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&q=80&auto=format&fit=crop',
         width: 1200,
         height: 630,
-        alt: 'Team collaborating',
+        alt: 'ClintonStack team building software',
       },
     ],
     type: 'website',
@@ -40,7 +33,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'ClintonStack Technologies',
-    description: 'Custom software, websites and AI automation for businesses.',
+    description: 'Premium software, AI systems, and digital experiences for ambitious companies.',
     images: ['https://clintonstack.com/og-image.png'],
     site: '@clintonstack',
   },
@@ -52,7 +45,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={inter.variable}>
-      <body className="min-h-screen flex flex-col">
+      <body className="min-h-screen bg-slate-950 text-slate-100">
         <Header />
         <div className="flex-1">{children}</div>
         <Footer />

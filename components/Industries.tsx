@@ -1,28 +1,23 @@
-import React from 'react';
+import AnimatedSection from './AnimatedSection';
 
-const industries = [
-  'Healthcare',
-  'E-commerce',
-  'Professional Services',
-  'Manufacturing',
-  'Fintech',
-  'Logistics',
-];
+const industries = ['Healthcare', 'E-commerce', 'Professional Services', 'Manufacturing', 'Fintech', 'Logistics'];
 
 export default function Industries() {
   return (
-    <section className="py-20 bg-slate-50">
-      <div className="container mx-auto text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Industries We Serve</h2>
-        <p className="text-gray-600 max-w-3xl mx-auto">We work with organizations of all sizes across multiple industries to design and deliver systems that accelerate growth.</p>
-        <div className="grid md:grid-cols-3 gap-6 mt-8 max-w-4xl mx-auto">
-          {industries.map((i) => (
-            <div key={i} className="p-6 bg-white rounded-xl shadow-sm">
-              <h4 className="font-semibold">{i}</h4>
+    <section className="border-b border-white/10 bg-slate-900/70 px-6 py-24 sm:px-8 lg:px-10">
+      <AnimatedSection className="mx-auto max-w-7xl">
+        <div className="mb-12 max-w-3xl">
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.32em] text-cyan-400">Industries we serve</p>
+          <h2 className="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">Built to support fast-moving organizations from startup to enterprise scale.</h2>
+        </div>
+        <div className="grid gap-4 md:grid-cols-3">
+          {industries.map((industry) => (
+            <div key={industry} className="rounded-[1.4rem] border border-white/10 bg-white/5 px-6 py-8 text-center text-lg font-medium text-slate-200">
+              {industry}
             </div>
           ))}
         </div>
-      </div>
+      </AnimatedSection>
     </section>
   );
 }
