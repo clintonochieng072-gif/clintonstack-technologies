@@ -8,7 +8,7 @@ export default function Head() {
     '@type': 'Organization',
     name: 'ClintonStack Technologies',
     url: SITE_URL,
-    logo: `${SITE_URL}/favicon.svg`,
+    logo: `${SITE_URL}/icon.png`,
     sameAs: [
       'https://www.linkedin.com/in/clinton-ochieng-706263351',
       'https://www.instagram.com/clintonstack',
@@ -35,7 +35,6 @@ export default function Head() {
     <>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta name="theme-color" content="#0B3D91" />
-      <link rel="icon" href="/favicon.svg" />
       <link rel="canonical" href={SITE_URL} />
       <meta name="robots" content="index, follow" />
       <script type="application/ld+json">{JSON.stringify(jsonLdOrganization)}</script>
